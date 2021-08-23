@@ -4,12 +4,14 @@ import React, { useState, useEffect } from "react";
 export const PlantDetails = (props) => {
   const { data } = props;
   const [Plant, setPlant] = useState([]);
+  console.log(props)
 
   useEffect(() => {
     axios
       .get(`https://water-plants-api.herokuapp.com/plants/${data.id}`)
       .then((res) => {
         console.log(res.data);
+        setPlant(res.data)
       })
       .catch((err) => {
         console.log("Error", err);
@@ -19,9 +21,9 @@ export const PlantDetails = (props) => {
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg">
       <div className="px-4 py-5 sm:px-6">
-        {/* {Plant.map(plant => (
+        {Plant.map(plant => (
 					<h1>{plant.name}hELLOwoRLD</h1>
-				))} */}
+				))}
 
         <h3 className="text-lg leading-6 font-medium text-gray-900">
           Plant Information

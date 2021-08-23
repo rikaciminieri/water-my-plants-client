@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function PlantList() {
+  
   const [Plant, setPlant] = useState([]);
 
   useEffect(() => {
@@ -10,13 +11,15 @@ function PlantList() {
       .get("https://water-plants-api.herokuapp.com/plants")
       .then((res) => {
         setPlant(res.data);
+        console.log(res.data)
       })
       .catch((err) => {
         console.log("ERROR!", err);
       });
-  }, []);
+  },[]);
 
   return (
+    
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -49,7 +52,7 @@ function PlantList() {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {Plant.map((plant) => (
-                  <tr key={plant.plant_id}>
+                  <tr key={plant.id}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">

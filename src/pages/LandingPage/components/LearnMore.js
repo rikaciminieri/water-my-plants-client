@@ -11,7 +11,7 @@ const LearnMore = () => {
           <div className="flex items-center mx-auto justify-center h-48 w-48 rounded-md bg-indigo-500 text-white">
             <img
               className="object-contain pb-10"
-              src="https://images.unsplash.com/photo-1595489154995-75e074c8ef20?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              src="https://images.unsplash.com/photo-1595489154995-75e074c8ef20?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt=''
             />
           </div>
         </div>
@@ -29,6 +29,7 @@ const LearnMore = () => {
             <img
               className="object-contain pb-10"
               src="https://images.unsplash.com/photo-1545074116-ba9228a4183c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3334&q=80"
+              alt=''
             />
           </div>
         </div>
@@ -45,7 +46,7 @@ const LearnMore = () => {
           <div className="flex items-center mx-auto justify-center h-36 w-40 rounded-md text-white">
             <img
               className="object-contain pb-10"
-              src="https://images.unsplash.com/photo-1598880940371-c756e015fea1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              src="https://images.unsplash.com/photo-1598880940371-c756e015fea1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt=''
             />
           </div>
         </div>
