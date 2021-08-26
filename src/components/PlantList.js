@@ -7,7 +7,7 @@ function PlantList() {
 
   useEffect(() => {
     axios
-      .get("https://water-plants-api.herokuapp.com/plants")
+      .get("http://localhost:4000/api/plants/")
       .then((res) => {
         setPlant(res.data);
       })
@@ -40,7 +40,7 @@ function PlantList() {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Frequency
+                    Frequency (per month)
                   </th>
                   <th scope="col" className="relative px-6 py-3">
                     <span className="sr-only">Edit</span>
@@ -73,7 +73,7 @@ function PlantList() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                        {plant.frequency}
+                        {plant.h2oFrequency}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

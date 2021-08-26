@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as yup from "yup";
 import schema from "../schema";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const initialFormValues = {
   username: "",
@@ -23,11 +23,14 @@ const SignUpForm = () => {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
 
+  const { push } = useHistory();
+
   const postNewUser = (newUser) => {
     axios
-      .post("https://reqres.in/api/users", newUser)
+      .post("http://localhost:4000/api/auth/register", newUser)
       .then((res) => {
         console.log(res);
+        push("/sign-in");
       })
       .catch((err) => console.log(err))
       .finally(() => {
