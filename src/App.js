@@ -9,6 +9,7 @@ import SignInPage from './pages/SignInPage';
 import PlantList from './components/PlantList';
 import PlantDetails from './components/Plant';
 
+
 function App() {
 	return (
 		<BrowserRouter>
@@ -31,9 +32,11 @@ function App() {
 				<Route path='/plant-list'>
 					<PlantList />
 				</Route>
+
 				<Route path='/plant/:id'>
 					<PlantDetails />
 				</Route>
+				
 				<Redirect to='/' />
 			</Switch>
 		</BrowserRouter>

@@ -1,14 +1,17 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import {useParams} from 'react-router-dom'
+
 
 export const PlantDetails = (props) => {
-  const { data } = props;
+  
   const [Plant, setPlant] = useState([]);
-  console.log(props)
+  
+  const { id } = useParams()
 
   useEffect(() => {
     axios
-      .get(`https://water-plants-api.herokuapp.com/plants/${data.id}`)
+      .get(`https://water-plants-api.herokuapp.com/plants/${id}`)
       .then((res) => {
         console.log(res.data);
         setPlant(res.data)
@@ -16,14 +19,14 @@ export const PlantDetails = (props) => {
       .catch((err) => {
         console.log("Error", err);
       });
-  }, [data.id]);
+  }, [id]);
 
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg">
       <div className="px-4 py-5 sm:px-6">
-        {Plant.map(plant => (
+        {/* {Plant.map(plant => (
 					<h1>{plant.name}hELLOwoRLD</h1>
-				))}
+				))} */}
 
         <h3 className="text-lg leading-6 font-medium text-gray-900">
           Plant Information
@@ -37,7 +40,7 @@ export const PlantDetails = (props) => {
           <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">Plant name</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              PLANT NAME GOES HERE
+              {Plant.name}
             </dd>
           </div>
           <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -45,29 +48,25 @@ export const PlantDetails = (props) => {
               Plant Nickname
             </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              NICKNAME GOES HERE
+              {Plant.nickname}
             </dd>
           </div>
           <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">Plant Species</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              PLANT SPECIES GOES HERE!
+            {Plant.species}
             </dd>
           </div>
           <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">H20 Frequency</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              H20 FREQUENCY GOES HERE
+            {Plant.frequency || Plant.h2ofrequency}
             </dd>
           </div>
           <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">Plant Image</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              IMAGE GOES HERE -YGFDAYUIGDAYUIG DIY A U S G D A Y U D G A
-              YUSDGUYASIGDY UAIGDAYUGDAY U G DSAYUGDIAD GAYUTIDGW AWDYU ADYU
-              AWYUGD A U YWAGDGAUW YD G Y SADADADFATYDFAYTFDYTA FWDTYA
-              FWDTYAUWAIYU YUWA DYUW UG WUY DYUGW DGAYUW DGAYUD S ADADADADSAD A
-              UY
+              <img alt='Plant'src={Plant.image}></img>
             </dd>
           </div>
           <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
