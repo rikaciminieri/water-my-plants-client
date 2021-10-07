@@ -3,13 +3,16 @@ import Main from "./components/Main";
 import MainHeader from "../../components/MainHeader";
 import CreateNewPlant from "./components/CreateNewPlant";
 
+
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
+
 
   return (
     <div>
       <MainHeader />
-      <Main />
+      <Main/>
+
       <div className="flex justify-center">
       <button
         onClick={() => setIsOpen(true)}
@@ -18,7 +21,7 @@ const Dashboard = () => {
         Add a new plant
       </button>
       </div>
-      <CreateNewPlant open={isOpen} onClose={() => setIsOpen(false)} />
+      <CreateNewPlant open={isOpen} onClose={() => setIsOpen(false)}/>
     </div>
   );
 };

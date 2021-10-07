@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory, Route } from "react-router-dom";
 
-function PlantList() {
+
+function PlantList(props) {
+  
+  
   const [Plant, setPlant] = useState([]);
 
   useEffect(() => {
@@ -10,13 +13,17 @@ function PlantList() {
       .get("https://water-plants-api.herokuapp.com/plants")
       .then((res) => {
         setPlant(res.data);
+        console.log(res.data)
       })
       .catch((err) => {
         console.log("ERROR!", err);
       });
-  }, []);
+  },[]);
+
+
 
   return (
+    
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -48,8 +55,36 @@ function PlantList() {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {Plant.map((plant) => (
-                  <tr key={plant.plant_id}>
+                {
+                Plant.map(plant => {
+                  return(
+                    <PlantListDetails key={plant.id} plant={plant}/>
+                  )
+                })
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default PlantList;
+
+
+
+function PlantListDetails(props){ 
+  // const history = useHistory()
+
+  // const routeToSinglePlant = () => {
+  //   history.push(`plant/${props.plant.id}`)
+  // }
+  const plant = props.plant;
+
+  return (
+    <tr key={plant.id}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
@@ -73,7 +108,7 @@ function PlantList() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                        {plant.frequency}
+                        {plant.frequency || plant.h2ofrequency}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -81,19 +116,12 @@ function PlantList() {
                         value={plant}
                         to={`/plant/${plant.id}`}
                         className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-500 hover:bg-green-600"
+                        
                       >
                         Learn More
                       </Link>
                     </td>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+  )
 
-export default PlantList;
+}
